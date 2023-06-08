@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bullet: MyString
+  proporsal_section: one
+  order: 1
+
+two:
+  bullet: MyString
+  proporsal_section: two
+  order: 1
