@@ -6,7 +6,7 @@ import firebaseClient from "firebase/compat/app";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { auth, provider } from "@/utils/config/firebase";
 import { getUser, chatLogin } from "@/utils/api";
-import useNotificationDisplay from "./notification";
+import useNotificationDisplay from "../utils/notification";
 import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
