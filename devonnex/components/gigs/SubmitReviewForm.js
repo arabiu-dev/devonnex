@@ -11,7 +11,7 @@ function SubmitReviewForm({ username, gigId, id, gig_created_by, offered_to }) {
     const to_user = offered_to === username ? gig_created_by : username;
 
     // Send a POST request to create the review
-    const response = await fetch(`http://localhost:3030/api/v1/reviews/`, {
+    const response = await fetch(`http://api.devonnex.tech/api/v1/reviews/`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

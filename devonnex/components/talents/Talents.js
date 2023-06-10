@@ -6,7 +6,7 @@ import Refresher from "../../utils/refresher";
 
 async function getData(page, filter) {
   const res = await fetch(
-    `http://localhost:3030/api/v1/talents?page=${page}&filter=${filter}`,
+    `http://api.devonnex.tech/api/v1/talents?page=${page}&filter=${filter}`,
     { cache: "no-store" }
   );
 

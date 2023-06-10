@@ -82,8 +82,8 @@ function Profile({ searchParams: { user } }) {
               {isProfileOwner && (
                 <Ellipses
                   handlers={[
-                    ["Edit", `/gigs/create?id=${""}`],
-                    ["Delete", `http://localhost:3030/api/v1/gigs/${""}`],
+                    ["Edit", `/account/funds`],
+                    ["Delete", `/accound/funds`],
                   ]}
                 />
               )}

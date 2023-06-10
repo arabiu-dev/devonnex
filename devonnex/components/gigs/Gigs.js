@@ -7,7 +7,7 @@ import { Time, Location, Star, People } from "../../utils/Icons";
 
 async function getData(page, filter) {
   const res = await fetch(
-    `http://localhost:3030/api/v1/gigs?page=${page}&filter=${filter}`,
+    `http://api.devonnex.tech/api/v1/gigs?page=${page}&filter=${filter}`,
     { cache: "no-store" }
   );
 

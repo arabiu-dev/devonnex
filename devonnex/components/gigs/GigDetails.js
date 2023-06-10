@@ -19,7 +19,7 @@ function GigDetails({ gig, id, gigId }) {
             ["Edit", `/gigs/create?id=${gigId}`],
             [
               "Delete",
-              `http://localhost:3030/api/v1/gigs/${gigId}`,
+              `http://api.devonnex.tech/api/v1/gigs/${gigId}`,
               "/gigs?page=1&filter=All",
             ],
           ]}

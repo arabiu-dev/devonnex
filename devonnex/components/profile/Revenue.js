@@ -8,8 +8,8 @@ function Revenue({ revenue, isProfileOwner }) {
       {isProfileOwner && (
         <Ellipses
           handlers={[
-            ["Withdraw", `/gigs/create?id=${""}`],
-            ["Add Funds", `http://localhost:3030/api/v1/gigs/${""}`],
+            ["Withdraw", `/account/funds`],
+            ["Add Funds", `/account/funds`],
           ]}
         />
       )}
