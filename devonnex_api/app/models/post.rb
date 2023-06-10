@@ -3,7 +3,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :delete_all
-  has_many :paragraphs, dependent: :delete_all
+  has_many :paragraphs, -> { order(:order) }, dependent: :delete_all
+
 
   validates :title, presence: true
   validates :topic, presence: true
