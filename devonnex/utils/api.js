@@ -35,6 +35,7 @@ const fetchUserReviews = async (username) => {
   }
 };
 
+// fetch user comments
 const fetchUserComments = async (id) => {
   try {
     const response = await axios.get(
@@ -94,7 +95,7 @@ const createUser = async ({ photoData, reqData }) => {
 
     const chatResponse = await axios({
       method: "post",
-      url: "http://localhost:8080/app/signup",
+      url: "http://chat.devonnex.tech/app/signup",
       data: chatData,
       headers: { "Content-Type": "application/json" },
     });
@@ -110,7 +111,7 @@ const chatLogin = async ({ username, password }) => {
   try {
     const chatResponse = await axios({
       method: "post",
-      url: "http://localhost:8080/app/signin",
+      url: "http://chat.devonnex.tech/app/signin",
       data: { username, password },
       headers: { "Content-Type": "application/json" },
     });
@@ -471,7 +472,7 @@ const getProposal = async ({ queryKey }) => {
 const getContacts = async (user) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/app/contacts?username=${user}`,
+      `http://chat.devonnex.tech/app/contacts?username=${user}`,
       {
         method: "GET",
         mode: "cors",
@@ -493,7 +494,7 @@ const newUserContact = async (reqData) => {
   try {
     const response = await axios({
       method: "post",
-      url: "http://localhost:8080/app/verify",
+      url: "http://chat.devonnex.tech/app/verify",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -516,7 +517,7 @@ const newUserContact = async (reqData) => {
 const fetchChatHistory = async (user1, user2) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/app/chats?user1=${user1}&user2=${user2}`,
+      `http://chat.devonnex.tech/app/chats?user1=${user1}&user2=${user2}`,
       {
         method: "GET",
         mode: "cors",
@@ -538,7 +539,7 @@ const sendMessage = async (messageData) => {
   try {
     const response = await axios({
       method: "post",
-      url: "http://localhost:8080/app/send",
+      url: "http://chat.devonnex.tech/app/send",
       data: messageData,
       headers: { "Content-Type": "application/json" },
     });
