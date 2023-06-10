@@ -71,7 +71,7 @@ function AuthProvider({ children }) {
 
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email, {
-      url: "http://localhost:3000/auth/login",
+      url: "http://devonnex.tech/auth/login",
     });
   };
 

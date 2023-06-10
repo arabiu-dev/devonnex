@@ -50,10 +50,9 @@ export default function Register() {
     } catch (err) {
       if (err.code === "auth/email-already-in-use")
         setNotification(false, "Email already used by another account");
-
-      if (err.code === "auth/invalid-email")
+      else if (err.code === "auth/invalid-email")
         setNotification(false, "Email is not valid");
-
+      else setNotification(false, "Something went wrong.");
       setLoading(false);
     }
   };
