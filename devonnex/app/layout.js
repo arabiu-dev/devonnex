@@ -22,6 +22,9 @@ export const metadata = {
     Developer gig marketplace, Best freelance platforms for developers, Hire skilled developers,\
     Custom software development freelancers, Web development freelancers, Mobile app development freelancers,\
     Software engineering freelancers, Freelance API integration, E- commerce development freelancers",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -32,6 +35,7 @@ export default function RootLayout({ children }) {
         className={urbanist.className}
         id="top"
       >
+        <link rel="icon" href="/favicon.svg" sizes="any" />
         <Wrapper>
           <AuthProvider>
             <ChatProvider>
