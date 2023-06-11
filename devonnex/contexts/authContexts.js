@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import nookies, { setCookie } from "nookies";
+import nookies from "nookies";
 import firebaseClient from "firebase/compat/app";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { auth, provider } from "@/utils/config/firebase";
@@ -36,8 +36,8 @@ function AuthProvider({ children }) {
     onSuccess: (data) => {
       if (!data["error"]) {
         setCurrentUserDetails(data);
-        setCookie(null, "userDetails", JSON.stringify(data), {
-          maxAge: 30 * 24 * 60 * 60, // 30 days expiration
+        nookies.set(undefined, "userDetails", JSON.stringify(data), {
+          path: "/",
         });
         if (password) {
           loginUserChatMutation.mutate({
