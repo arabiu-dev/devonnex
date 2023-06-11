@@ -10,7 +10,7 @@ import Link from "next/link";
 
 async function getData() {
   const res = await fetch(
-    `http://api.devonnex.tech/api/v1/talents?page=1&filter=All`,
+    `https://api.devonnex.tech/api/v1/talents?page=1&filter=All`,
     { cache: "no-store" }
   );
 

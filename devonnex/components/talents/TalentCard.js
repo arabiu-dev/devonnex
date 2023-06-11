@@ -32,7 +32,7 @@ function TalentCard({ talent, id }) {
               ["Edit", `/talents/create?id=${talent.id}`],
               [
                 "Delete",
-                `http://api.devonnex.tech/api/v1/talents/${talent.id}`,
+                `https://api.devonnex.tech/api/v1/talents/${talent.id}`,
                 "/talents?pages=1&filter=All",
               ],
             ]}

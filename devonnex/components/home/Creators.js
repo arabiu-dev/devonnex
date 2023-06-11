@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CheckmarkCircle, PersonAddOutline } from "../../utils/Icons";
 
 async function getData() {
-  const res = await fetch(`http://api.devonnex.tech/api/v1/users`, {
+  const res = await fetch(`https://api.devonnex.tech/api/v1/users`, {
     cache: "no-store",
   });
 

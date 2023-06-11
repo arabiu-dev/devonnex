@@ -5,7 +5,9 @@ import nookies from "nookies";
 const checkIfUserExist = async (username) => {
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/users/${username.trim() || "null"}/exist`
+      `https://api.devonnex.tech/api/v1/users/${
+        username.trim() || "null"
+      }/exist`
     );
     return response.data;
   } catch (err) {
@@ -16,7 +18,7 @@ const checkIfUserExist = async (username) => {
 const fetchUserGigs = async (id, username) => {
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/user/gigs?user_id=${id}&username=${username}`
+      `https://api.devonnex.tech/api/v1/user/gigs?user_id=${id}&username=${username}`
     );
     return response.data;
   } catch (err) {
@@ -27,7 +29,7 @@ const fetchUserGigs = async (id, username) => {
 const fetchUserReviews = async (username) => {
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/user/reviews?username=${username}`
+      `https://api.devonnex.tech/api/v1/user/reviews?username=${username}`
     );
     return response.data;
   } catch (err) {
@@ -39,7 +41,7 @@ const fetchUserReviews = async (username) => {
 const fetchUserComments = async (id) => {
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/user/comments?user_id=${id}`
+      `https://api.devonnex.tech/api/v1/user/comments?user_id=${id}`
     );
     return response.data;
   } catch (err) {
@@ -52,7 +54,7 @@ const getUser = async ({ queryKey }) => {
   if (!queryKey[1]) return;
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/users/${queryKey[1].uid}`,
+      `https://api.devonnex.tech/api/v1/users/${queryKey[1].uid}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +81,7 @@ const createUser = async ({ photoData, reqData }) => {
     reqData.user["image_url"] = photoId;
     const userResponse = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/users/",
+      url: "https://api.devonnex.tech/api/v1/users/",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -95,7 +97,7 @@ const createUser = async ({ photoData, reqData }) => {
 
     const chatResponse = await axios({
       method: "post",
-      url: "http://chat.devonnex.tech/app/signup",
+      url: "https://chat.devonnex.tech/app/signup",
       data: chatData,
       headers: { "Content-Type": "application/json" },
     });
@@ -111,7 +113,7 @@ const chatLogin = async ({ username, password }) => {
   try {
     const chatResponse = await axios({
       method: "post",
-      url: "http://chat.devonnex.tech/app/signin",
+      url: "https://chat.devonnex.tech/app/signin",
       data: { username, password },
       headers: { "Content-Type": "application/json" },
     });
@@ -136,7 +138,7 @@ const createPost = async ({ photoData, reqData, paraData }) => {
     reqData.post["image_url"] = photoId;
     let response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/posts/",
+      url: "https://api.devonnex.tech/api/v1/posts/",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -148,7 +150,7 @@ const createPost = async ({ photoData, reqData, paraData }) => {
 
     response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/paragraphs/",
+      url: "https://api.devonnex.tech/api/v1/paragraphs/",
       data: paraData,
       headers: { "Content-Type": "application/json" },
     });
@@ -164,7 +166,7 @@ const getPost = async ({ queryKey }) => {
   if (!queryKey[1]) return;
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/posts/${queryKey[1]}`,
+      `https://api.devonnex.tech/api/v1/posts/${queryKey[1]}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -194,7 +196,7 @@ const updatePost = async ({ photoData, reqData, paraData }) => {
 
     let response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/posts/${reqData.post.id}`,
+      url: `https://api.devonnex.tech/api/v1/posts/${reqData.post.id}`,
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -206,7 +208,7 @@ const updatePost = async ({ photoData, reqData, paraData }) => {
 
     response = await axios({
       method: "put",
-      url: "http://api.devonnex.tech/api/v1/paragraphs/",
+      url: "https://api.devonnex.tech/api/v1/paragraphs/",
       data: paraData,
       headers: { "Content-Type": "application/json" },
     });
@@ -222,7 +224,7 @@ const createGig = async ({ reqData, sectionData }) => {
   try {
     let response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/gigs/",
+      url: "https://api.devonnex.tech/api/v1/gigs/",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -236,7 +238,7 @@ const createGig = async ({ reqData, sectionData }) => {
 
     response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/sections/",
+      url: "https://api.devonnex.tech/api/v1/sections/",
       data: sectionData,
       headers: { "Content-Type": "application/json" },
     });
@@ -252,7 +254,7 @@ const createProposal = async ({ reqData, sectionData }) => {
   try {
     let response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/proposals/",
+      url: "https://api.devonnex.tech/api/v1/proposals/",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -266,7 +268,7 @@ const createProposal = async ({ reqData, sectionData }) => {
 
     response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/proposal_sections/",
+      url: "https://api.devonnex.tech/api/v1/proposal_sections/",
       data: sectionData,
       headers: { "Content-Type": "application/json" },
     });
@@ -280,7 +282,7 @@ const updateGig = async ({ reqData, sectionData }) => {
   try {
     let response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/gigs/${reqData.gig.id}`,
+      url: `https://api.devonnex.tech/api/v1/gigs/${reqData.gig.id}`,
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -295,7 +297,7 @@ const updateGig = async ({ reqData, sectionData }) => {
 
     response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/sections/`,
+      url: `https://api.devonnex.tech/api/v1/sections/`,
       data: sectionData,
       headers: { "Content-Type": "application/json" },
     });
@@ -318,7 +320,7 @@ const updateProposal = async ({ sectionData, sectionId }) => {
   try {
     const response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/proposal_sections/`,
+      url: `https://api.devonnex.tech/api/v1/proposal_sections/`,
       data: sectionData,
       headers: { "Content-Type": "application/json" },
     });
@@ -332,21 +334,21 @@ const updateHiring = async ({ gig, gigUser, proposalUser }) => {
   try {
     let response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/gigs/${gig.id}`,
+      url: `https://api.devonnex.tech/api/v1/gigs/${gig.id}`,
       data: gig,
       headers: { "Content-Type": "application/json" },
     });
 
     response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/users/${gigUser[1]}`,
+      url: `https://api.devonnex.tech/api/v1/users/${gigUser[1]}`,
       data: { user: { revenue: gigUser[0] } },
       headers: { "Content-Type": "application/json" },
     });
 
     response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/users/${proposalUser[1]}`,
+      url: `https://api.devonnex.tech/api/v1/users/${proposalUser[1]}`,
       data: { user: { revenue: proposalUser[0] } },
       headers: { "Content-Type": "application/json" },
     });
@@ -368,7 +370,7 @@ const getGig = async ({ queryKey }) => {
   if (!queryKey[1]) return;
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/gigs/${queryKey[1]}`,
+      `https://api.devonnex.tech/api/v1/gigs/${queryKey[1]}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -395,7 +397,7 @@ const createTalent = async ({ photoData, reqData }) => {
     reqData.talent["ads_url"] = photoId;
     const response = await axios({
       method: "post",
-      url: "http://api.devonnex.tech/api/v1/talents/",
+      url: "https://api.devonnex.tech/api/v1/talents/",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -423,7 +425,7 @@ const updateTalent = async ({ photoData, reqData }) => {
 
     const response = await axios({
       method: "put",
-      url: `http://api.devonnex.tech/api/v1/talents/${reqData.talent.id}`,
+      url: `https://api.devonnex.tech/api/v1/talents/${reqData.talent.id}`,
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -437,7 +439,7 @@ const getTalent = async ({ queryKey }) => {
   if (!queryKey[1]) return;
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/talents/${queryKey[1]}`,
+      `https://api.devonnex.tech/api/v1/talents/${queryKey[1]}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -455,7 +457,7 @@ const getProposal = async ({ queryKey }) => {
   if (!queryKey[1]) return;
   try {
     const response = await axios.get(
-      `http://api.devonnex.tech/api/v1/proposals/${queryKey[1]}`,
+      `https://api.devonnex.tech/api/v1/proposals/${queryKey[1]}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -472,7 +474,7 @@ const getProposal = async ({ queryKey }) => {
 const getContacts = async (user) => {
   try {
     const response = await axios.get(
-      `http://chat.devonnex.tech/app/contacts?username=${user}`,
+      `https://chat.devonnex.tech/app/contacts?username=${user}`,
       {
         method: "GET",
         mode: "cors",
@@ -494,7 +496,7 @@ const newUserContact = async (reqData) => {
   try {
     const response = await axios({
       method: "post",
-      url: "http://chat.devonnex.tech/app/verify",
+      url: "https://chat.devonnex.tech/app/verify",
       data: reqData,
       headers: { "Content-Type": "application/json" },
     });
@@ -517,7 +519,7 @@ const newUserContact = async (reqData) => {
 const fetchChatHistory = async (user1, user2) => {
   try {
     const response = await axios.get(
-      `http://chat.devonnex.tech/app/chats?user1=${user1}&user2=${user2}`,
+      `https://chat.devonnex.tech/app/chats?user1=${user1}&user2=${user2}`,
       {
         method: "GET",
         mode: "cors",
@@ -539,7 +541,7 @@ const sendMessage = async (messageData) => {
   try {
     const response = await axios({
       method: "post",
-      url: "http://chat.devonnex.tech/app/send",
+      url: "https://chat.devonnex.tech/app/send",
       data: messageData,
       headers: { "Content-Type": "application/json" },
     });

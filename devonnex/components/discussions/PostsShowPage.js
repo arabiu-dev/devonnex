@@ -14,7 +14,7 @@ const robo = Averia_Sans_Libre({
 });
 
 async function getData(postId) {
-  const res = await fetch(`http://api.devonnex.tech/api/v1/posts/${postId}`, {
+  const res = await fetch(`https://api.devonnex.tech/api/v1/posts/${postId}`, {
     cache: "no-store",
   });
 
@@ -35,7 +35,7 @@ async function PostsShowPage({ searchParams: { postId } }) {
     if (!formData.get("comment")) return;
     const cookie = cookies().get("userDetails");
 
-    const res = await fetch(`http://api.devonnex.tech/api/v1/comments/`, {
+    const res = await fetch(`https://api.devonnex.tech/api/v1/comments/`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ async function PostsShowPage({ searchParams: { postId } }) {
                     ["Edit", `/discussions/create?id=${postId}`],
                     [
                       "Delete",
-                      `http://api.devonnex.tech/api/v1/posts/${postId}`,
+                      `https://api.devonnex.tech/api/v1/posts/${postId}`,
                       "/discussions?page=1&filter=All",
                     ],
                   ]}

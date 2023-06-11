@@ -15,7 +15,7 @@ export default function EmailVerification() {
       currentUser.reload();
       if (!currentUser.emailVerified) {
         currentUser.sendEmailVerification({
-          url: "http://devonnex.tech/account/setup",
+          url: "https://devonnex.tech/account/setup",
         });
       } else {
         router.push("/account/setup");
@@ -62,7 +62,7 @@ export default function EmailVerification() {
           onClick={async () => {
             setCountdown(120);
             currentUser.sendEmailVerification({
-              url: "http://devonnex.tech/account/setup",
+              url: "https://devonnex.tech/account/setup",
             });
           }}
           className="btn"

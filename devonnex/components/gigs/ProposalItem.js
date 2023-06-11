@@ -37,7 +37,7 @@ function ProposalItem({ proposal, gig, user_id }) {
               ],
               [
                 "Delete",
-                `http://api.devonnex.tech/api/v1/proporsals/${proposal.id}`,
+                `https://api.devonnex.tech/api/v1/proporsals/${proposal.id}`,
                 `/gigs/details/${gig.id}`,
               ],
             ]}

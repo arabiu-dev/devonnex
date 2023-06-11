@@ -9,7 +9,7 @@ import Refresher from "../../utils/refresher";
 
 async function getRecentPosts(page, filter) {
   const res = await fetch(
-    `http://api.devonnex.tech/api/v1/posts?page=${page}&filter=${filter}`,
+    `https://api.devonnex.tech/api/v1/posts?page=${page}&filter=${filter}`,
     {
       cache: "no-store",
     }
@@ -25,7 +25,7 @@ async function getRecentPosts(page, filter) {
 
 async function getRecentComments(id) {
   const res = await fetch(
-    `http://api.devonnex.tech/api/v1/user/comments?user_id=${id}`,
+    `https://api.devonnex.tech/api/v1/user/comments?user_id=${id}`,
     {
       cache: "no-store",
     }
@@ -41,7 +41,7 @@ async function getRecentComments(id) {
 
 async function getUserPosts(id) {
   const res = await fetch(
-    `http://api.devonnex.tech/api/v1/user/posts?user_id=${id}`,
+    `https://api.devonnex.tech/api/v1/user/posts?user_id=${id}`,
     {
       cache: "no-store",
     }

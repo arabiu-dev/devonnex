@@ -71,7 +71,7 @@ function AuthProvider({ children }) {
 
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email, {
-      url: "http://devonnex.tech/auth/login",
+      url: "https://devonnex.tech/auth/login",
     });
   };
 

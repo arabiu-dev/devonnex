@@ -8,7 +8,7 @@ import Refresher from "../../utils/refresher";
 
 // Function to fetch data for a gig asynchronously
 async function getData(gigId) {
-  const res = await fetch(`http://api.devonnex.tech/api/v1/gigs/${gigId}`, {
+  const res = await fetch(`https://api.devonnex.tech/api/v1/gigs/${gigId}`, {
     cache: "no-store",
   });
 

@@ -32,7 +32,7 @@ export default function ChatProvider({ children }) {
   const cb = useRef(null);
 
   useEffect(() => {
-    socket.current = new WebSocket(`ws://localhost:8081/ws`);
+    socket.current = new WebSocket(`wss://chat.devonnex.tech/ws`);
 
     return () => {
       socket.current.close();

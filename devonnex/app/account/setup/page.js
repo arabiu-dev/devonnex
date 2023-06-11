@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { destroyCookie } from "nookies";
+import { setCookie, destroyCookie } from "nookies";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContexts";
 import { checkIfUserExist, createUser } from "@/utils/api";
@@ -71,6 +71,9 @@ export default function AccountSetupPage() {
     mutationFn: createUser,
     onSuccess: (data) => {
       setCurrentUserDetails(data);
+      setCookie(null, "userDetails", JSON.stringify(data), {
+        maxAge: 30 * 24 * 60 * 60, // 30 days expiration
+      });
       destroyCookie(null, "_psw_", { path: "/" });
       setNotification(true, "Acount created successfully");
       router.push(`/account?user=${data.username}`);

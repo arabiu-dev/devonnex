@@ -6,7 +6,7 @@ import PostItem from "./PostItem";
 
 async function getPopularPosts() {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
-  const res = await fetch(`http://api.devonnex.tech/api/v1/posts/popular`, {
+  const res = await fetch(`https://api.devonnex.tech/api/v1/posts/popular`, {
     cache: "no-store",
   });
 
