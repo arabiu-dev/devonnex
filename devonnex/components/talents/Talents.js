@@ -1,5 +1,4 @@
 import React from "react";
-import { cookies } from "next/headers"; // Import cookies
 import Pagination from "@/utils/pagination";
 import TalentCard from "./TalentCard";
 import Refresher from "../../utils/refresher";
@@ -17,12 +16,11 @@ async function getData(page, filter) {
   return res.json();
 }
 
-async function Talents({ searchParams: { page, filter } }) {
+async function Talents({
+  searchParams: { page, filter },
+  userDetails: { id },
+}) {
   const data = await getData(page, filter);
-
-  // Get user details from the cookie
-  const cookie = cookies().get("userDetails");
-  const { id } = JSON.parse(cookie.value);
 
   return (
     <>

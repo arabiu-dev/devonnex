@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import moment from "moment";
-import { cookies } from "next/headers";
 import Pagination from "@/utils/pagination";
 import PopularPost from "./PopularPost";
 import RenderPost from "./RenderPost";
@@ -55,9 +54,10 @@ async function getUserPosts(id) {
   return res.json();
 }
 
-const RecentPosts = async ({ searchParams: { page, filter } }) => {
-  const cookie = cookies().get("userDetails"); // Find cookie
-  const { id } = JSON.parse(cookie.value);
+const RecentPosts = async ({
+  searchParams: { page, filter },
+  userDetails: { id },
+}) => {
   const postsData = getRecentPosts(page, filter);
   const commentsData = getRecentComments(id);
   const userPostsData = getUserPosts(id);

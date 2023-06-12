@@ -25,10 +25,11 @@ async function getData(postId) {
   return res.json();
 }
 
-async function PostsShowPage({ searchParams: { postId } }) {
+async function PostsShowPage({
+  searchParams: { postId },
+  userDetails: { username, id },
+}) {
   const post = await getData(postId);
-  const cookie = cookies().get("userDetails");
-  const { username, id } = JSON.parse(cookie.value);
 
   const addComment = async (formData) => {
     "use server";

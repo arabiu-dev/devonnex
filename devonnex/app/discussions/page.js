@@ -21,6 +21,9 @@ async function DiscussionsPage({ searchParams }) {
     redirect("/auth/login");
   }
 
+  const cookie = cookies().get("userDetails");
+  const user = JSON.parse(cookie.value);
+
   // the user is authenticated!
   return (
     <>
@@ -28,7 +31,7 @@ async function DiscussionsPage({ searchParams }) {
         <LatestPost />
       </Suspense>
       <Suspense fallback={<Loading />}>
-        <RecentPosts searchParams={searchParams} />
+        <RecentPosts searchParams={searchParams} userDetails={user} />
       </Suspense>
     </>
   );

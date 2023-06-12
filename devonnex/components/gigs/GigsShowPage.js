@@ -1,5 +1,4 @@
 import React from "react";
-import { cookies } from "next/headers"; // Import cookies
 import Link from "next/link";
 import GigDetails from "./GigDetails";
 import GigDetailsAside from "./GigDetailsAside";
@@ -20,13 +19,12 @@ async function getData(gigId) {
 }
 
 // React component for displaying the Gigs Show page
-async function GigsShowPage({ params: { gigId } }) {
+async function GigsShowPage({
+  params: { gigId },
+  userDetails: { id, username },
+}) {
   // Fetch the gig data
   const gig = await getData(gigId);
-
-  // Get user details from the cookie
-  const cookie = cookies().get("userDetails");
-  const { username, id } = JSON.parse(cookie.value);
 
   // Extract user information from the gig data
   const { user } = gig;
@@ -37,10 +35,7 @@ async function GigsShowPage({ params: { gigId } }) {
   // Check if the current user is the gig owner
   if (gig.user_id !== id) {
     proposal = gig.proposals.find((p) => p.user_id === id);
-    console.log(id);
   }
-
-  console.log(gig.proposals[0].user.id);
 
   return (
     <section

@@ -22,6 +22,9 @@ async function TalentsPage({ searchParams }) {
     redirect("/auth/login");
   }
 
+  const cookie = cookies().get("userDetails");
+  const user = JSON.parse(cookie.value);
+
   return (
     <section
       className="section discover product"
@@ -60,7 +63,7 @@ async function TalentsPage({ searchParams }) {
           </ul>
         </div>
         <Suspense fallback={<Loading />}>
-          <Talents searchParams={searchParams} />
+          <Talents searchParams={searchParams} userDetails={user} />
         </Suspense>
       </div>
     </section>

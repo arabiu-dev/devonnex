@@ -39,7 +39,7 @@ function Header() {
     return <></>;
 
   const onClick = async () => {
-    destroyCookie(null, "_userDetails_", { path: "/" });
+    destroyCookie(undefined, "_userDetails_", { path: "/" });
     destroyCookie(null, "_usertoken_");
     logout();
     setActive(false);
