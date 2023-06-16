@@ -37,7 +37,7 @@ The project follows a microservices-based architecture, utilizing different tech
    The project utilizes a database system, which can be PostgreSQL, MySQL, or another compatible database engine. Rails ORM (Object-Relational Mapping) handles the interactions with the database, ensuring efficient data storage and retrieval.
 
 5. Chat Backend:
-   The chat functionality is implemented using Golang. It provides a scalable and real-time communication system for the chat feature. Golang leverages WebSocket technology to establish bi-directional communication between the clients and the server.
+   The chat functionality is implemented using Golang. It provides a scalable and real-time communication system for the chat feature. Golang leverages WebSocket technology to establish bi-directional communication between the clients and the server. **Redis** is used as the data storage for the chat system, providing fast and efficient data handling.
 
 By utilizing microservices and separating concerns, the project architecture promotes modularity, scalability, and maintainability. Each component focuses on its specific responsibilities, allowing for independent development, testing, and deployment. The frontend communicates with the backend services through well-defined APIs, enabling loose coupling between the layers.
 

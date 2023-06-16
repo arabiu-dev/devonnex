@@ -1,24 +1,52 @@
-# README
+# Devonnex Api Installation Guide
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+- Ruby
+- Rails
+- PostgreSQL
+- Bundler
 
-* Ruby version
+## Steps
 
-* System dependencies
+Clone the repository to your local machine:
 
-* Configuration
+```bash
+git clone https://github.com/arabiu-dev/devonnex
+```
 
-* Database creation
+Navigate to the Devonnex Api directory:
 
-* Database initialization
+```bash
+cd devonnex_api
+```
 
-* How to run the test suite
+Install the required gems:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle install
+```
 
-* Deployment instructions
+Create the PostgreSQL database:
 
-* ...
+```ruby
+rails db:create
+```
+
+Run the database migrations:
+
+```ruby
+rails db:migrate
+```
+
+Start the Rails server:
+
+```ruby
+rails server -p 3030
+```
+
+The Devonnex api backend is now running locally on http://localhost:3030.
+
+## Configuration
+
+To configure the Rails backend with your specific settings, you can update the configuration files located in the config directory, such as **database.yml** for database configuration and **application.yml** for environment-specific variables.
