@@ -33,12 +33,18 @@ function AuthProvider({ children }) {
     queryKey: ["userDetails", currentUser],
     queryFn: getUser,
     enabled: currentUser !== null,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (!data["error"]) {
         setCurrentUserDetails(data);
-        nookies.set(undefined, "userDetails", JSON.stringify(data), {
-          path: "/",
-        });
+        nookies.set(
+          undefined,
+          "userDetails",
+          JSON.stringify({ ...data, posts: [], gigs: [], talents: [] }),
+          {
+            path: "/",
+          }
+        );
+
         if (password) {
           loginUserChatMutation.mutate({
             password: password === "---" ? currentUser.uid : password,

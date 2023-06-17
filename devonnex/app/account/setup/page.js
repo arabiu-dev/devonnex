@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { destroyCookie } from "nookies";
+import nookies, { destroyCookie } from "nookies";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContexts";
 import { checkIfUserExist, createUser } from "@/utils/api";

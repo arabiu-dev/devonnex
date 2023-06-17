@@ -10,7 +10,6 @@ import React, {
 import { useRouter } from "next/navigation";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "./authContexts";
-import socketHandler from "@/utils/websocket/ws";
 import { getContacts, newUserContact, fetchChatHistory } from "@/utils/api";
 
 const ChatContext = createContext();
@@ -24,20 +23,11 @@ export default function ChatProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [currentChatUser, setCurrentChatUser] = useState(null);
   const [chatHistory, setChatHistory] = useState({ data: [] });
-  const [socketSendMsg, setSocketSendMsg] = useState(undefined);
   const { currentUserDetails, setNotification } = useAuth();
   const queryClient = useQueryClient();
   const router = useRouter();
   const socket = useRef(null);
   const cb = useRef(null);
-
-  useEffect(() => {
-    socket.current = new WebSocket(`wss://chat.devonnex.tech/ws`);
-
-    return () => {
-      socket.current.close();
-    };
-  }, []);
 
   cb.current = (message) => {
     const msg = JSON.parse(message.data);
@@ -57,12 +47,34 @@ export default function ChatProvider({ children }) {
   };
 
   useEffect(() => {
-    if (socket.current?.readyState === WebSocket.OPEN) {
-      socket.current.removeEventListener("open", cb.current);
+    function connectWebSocket() {
+      socket.current = new WebSocket(`wss://chat.devonnex.tech/ws`);
+
+      // Handle WebSocket events
+      socket.current.onopen = () => {
+        socket.current.send(
+          JSON.stringify({ type: "bootup", user: currentUserDetails?.username })
+        );
+      };
+
+      socket.current.onmessage = (msg) => {
+        cb.current(msg);
+      };
+
+      socket.current.onclose = (event) => {
+        // Reconnect after a delay
+        setTimeout(() => connectWebSocket(), 1000);
+      };
+
+      return socket;
     }
-    setSocketSendMsg(
-      socketHandler(socket.current, cb.current, currentUserDetails?.username)
-    );
+
+    connectWebSocket();
+
+    // Cleanup function to close the WebSocket when the component unmounts
+    return () => {
+      socket.current.close();
+    };
   }, [currentChatUser, currentUserDetails?.username]);
 
   const contactsQuery = useQuery({
@@ -118,7 +130,7 @@ export default function ChatProvider({ children }) {
     };
 
     router.push("/chats");
-    await socketSendMsg(chat);
+    await socket.current.send(JSON.stringify(chat));
     await contactsQuery.refetch();
 
     setLoading(false);
@@ -132,7 +144,7 @@ export default function ChatProvider({ children }) {
     setCurrentChatUser,
     loading,
     setChatHistory,
-    socketSendMsg,
+    socket,
     handleInterview,
   };
 

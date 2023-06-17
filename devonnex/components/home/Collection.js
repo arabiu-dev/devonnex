@@ -5,15 +5,15 @@ import Link from "next/link";
 import { ArrowBack, ArrowForward } from "../../utils/Icons";
 
 const data = [
-  ["project-1_og57fa", "Web Development", "38"],
-  ["project-4_x9xvcm", "Mobile App Development", "18"],
-  ["project-7_bscngj", "Data Science", "48"],
-  ["project-6_f65txj", "Cybersecurity", "12"],
-  ["project-5_qdb9b4", "Cloud Computing", "38"],
-  ["project-3_ki6k8n", "UI/UX Design", "76"],
-  ["project-2_zchefq", "IT Project Management", "18"],
-  ["project-8_ghfk9n", "Database Administration", "48"],
-  ["project-9_pbpj9u", "IT Support and Helpdesk", "12"],
+  ["pngwing.com_1_npugmq", "Web Development", "38"],
+  ["pngwing.com_6_we43fp", "Mobile App Development", "18"],
+  ["pngwing.com_4_dxf9br", "Data Science", "48"],
+  ["pngwing.com_5_asx0l8", "Cybersecurity", "12"],
+  ["pngwing.com_6_we43fp", "Cloud Computing", "38"],
+  ["pngwing.com_7_if0gee", "UI/UX Design", "76"],
+  ["pngwing.com_2_ew00ax", "IT Project Management", "18"],
+  ["pngwing.com_3_l5admu", "Database Administration", "48"],
+  ["pngwing.com_8_wa9e5z", "IT Support and Helpdesk", "12"],
 ];
 
 function Collection() {
@@ -122,7 +122,10 @@ function Collection() {
             >
               {data.map((field) => (
                 <li className="slider-item" key={field[1]}>
-                  <Link href="/discussions" className="slider-card">
+                  <Link
+                    href="/discussions?page=1&filter=All"
+                    className="slider-card"
+                  >
                     <figure
                       className="slider-banner img-holder"
                       style={{ "--width": "507", "--height": "618" }}

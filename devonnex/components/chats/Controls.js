@@ -5,7 +5,7 @@ import { GridOutline, SendOutline } from "../../utils/Icons";
 
 export default function Controls({ setActive, setModalClosed }) {
   const [msg, setMsg] = useState("");
-  const { currentChatUser, setChatHistory, socketSendMsg } = useChat();
+  const { currentChatUser, setChatHistory, socket } = useChat();
   const { currentUserDetails } = useAuth();
 
   const onClick = () => {
@@ -21,7 +21,7 @@ export default function Controls({ setActive, setModalClosed }) {
     };
 
     // Send message via socket
-    socketSendMsg(chat);
+    socket.current.send(JSON.stringify(chat));
 
     // Update chat history with the new message
     setChatHistory((prev) => ({

@@ -7,7 +7,7 @@ module Api
 
       # GET /paragraphs
       def index
-        @paragraphs = Paragraph.all
+        @paragraphs = Paragraph.order(:order)
 
         render json: @paragraphs
       end

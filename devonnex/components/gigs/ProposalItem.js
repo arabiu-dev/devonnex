@@ -61,7 +61,7 @@ function ProposalItem({ proposal, gig, user_id }) {
 
           <div className="profile-card" style={{ marginTop: "2rem" }}>
             <Image
-              src={`https://res.cloudinary.com/dqzvvp77h/image/upload/w_48,h_48/${gig.user.image_url}.jpg`}
+              src={`https://res.cloudinary.com/dqzvvp77h/image/upload/w_48,h_48/${proposal.user.image_url}.jpg`}
               width="48"
               height="48"
               loading="lazy"
@@ -74,7 +74,7 @@ function ProposalItem({ proposal, gig, user_id }) {
                 href={`/account?user=${proposal.user.username}`}
                 className="card-title"
               >
-                {review.user.full_name}
+                {proposal.user.full_name}
               </Link>
 
               <p className="card-subtitle">
